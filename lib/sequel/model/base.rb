@@ -1201,7 +1201,7 @@ module Sequel
         # NULL in the database, so assume it has changed.
         v = typecast_value(column, value)
         vals = @values
-        if new? || !vals.include?(column) || v != (c = vals[column]) || v.class != c.class
+        if new? || !vals.include?(column) || (c = vals[column]) != v || v.class != c.class
           change_column_value(column, v)
         end
       end
